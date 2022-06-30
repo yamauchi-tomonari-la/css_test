@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSSの動的な変更</title>
+    </head>
+    <body>
+        <h1>CSSの動的な変更</h1>
+        <p>テスト対象</p>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript">
+            var ua = navigator.userAgent;
+            var href;
+            if ((ua.indexOf('iPhone') > 0 || ua.indexOf('Android') > 0) && ua.indexOf('Mobile') > 0) {
+                // スマートフォン用処理
+                href='./smp.css';
+            } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+                // タブレット用処理
+                href='./tablet.css';
+            } else {
+            // PC用処理
+                href='./style.css'
+            }
+
+            var css = document.createElement('link');
+            css.rel = 'stylesheet';
+            css.href = href;
+            css.type = 'text/css';
+            var head = document.getElementsByTagName('head')[0];
+            head.appendChild(css);
+        </script>
+    </body>
+</html>
